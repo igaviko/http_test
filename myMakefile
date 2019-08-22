@@ -1,0 +1,2 @@
+all:
+	clang++ -std=c++11 -pthread -o test sock_threads.cpp http_serv.cpp main.cpp

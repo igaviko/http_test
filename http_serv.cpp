@@ -187,7 +187,7 @@ int HttpServer::ExchangeData(int sock)
 			{
 				in_buff >> tmp;
 				auto tmp1 = tmp.substr(0,tmp.find('?'));
-				if ((tmp1 == "/")||(tmp1 == "/index.html"))
+				if (tmp1 == "/index.html")
 					n = sprintf(sbuff, "%s", answ200.c_str()/*, index_html.length(), index_html.c_str()*/);
 				else
 					n = sprintf(sbuff, "%s", answ404.c_str());
@@ -195,12 +195,12 @@ int HttpServer::ExchangeData(int sock)
 			send(sock, sbuff, n, MSG_NOSIGNAL);
 		}
 	}
+		
+	delete [] rbuff;
+	delete [] sbuff;
 	
 	shutdown(sock, SHUT_RDWR);
 	close(sock);
-	
-	delete [] rbuff;
-	delete [] sbuff;
 	
 	return -1;
 }

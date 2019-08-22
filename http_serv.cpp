@@ -2,12 +2,17 @@
 #include "http_serv.hpp"
 
 const std::string HttpServer::index_html = "<HTML><TITLE>Hello!</TITLE><BODY><P>Test page</P></BODY></HTML>";
-			
+/*			
 const std::string HttpServer::answ200 = 	"HTTP/1.0 200 OK\r\n"
 			"Content-length: %d\r\n"
 			"Content-Type: text/html\r\n"
 			"\r\n%s";		
-
+*/
+const std::string HttpServer::answ200 = 	"HTTP/1.0 200 OK\r\n"
+			"Content-length: 63%d\r\n"
+			"Content-Type: text/html\r\n"
+			"\r\n<HTML><TITLE>Hello!</TITLE><BODY><P>Test page</P></BODY></HTML>";
+			
 const std::string HttpServer::answ404 = 	"HTTP/1.0 404 NOT FOUND\r\n"
 						"Content-length: 0\r\n"
 						"Content-Type: text/html\r\n"
@@ -183,7 +188,7 @@ int HttpServer::ExchangeData(int sock)
 				in_buff >> tmp;
 				auto tmp1 = tmp.substr(0,tmp.find('?'));
 				if ((tmp1 == "/")||(tmp1 == "/index.html"))
-					n = sprintf(sbuff, answ200.c_str(), index_html.length(), index_html.c_str());
+					n = sprintf(sbuff, "%s", answ200.c_str()/*, index_html.length(), index_html.c_str()*/);
 				else
 					n = sprintf(sbuff, "%s", answ404.c_str());
 			}

@@ -9,9 +9,9 @@ const std::string HttpServer::answ200 = 	"HTTP/1.0 200 OK\r\n"
 			"\r\n%s";		
 */
 const std::string HttpServer::answ200 = 	"HTTP/1.0 200 OK\r\n"
-			"Content-length: 63\r\n"
+			"Content-length: 19\r\n"
 			"Content-Type: text/html\r\n"
-			"\r\n<HTML><TITLE>Hello!</TITLE><BODY><P>Test page</P></BODY></HTML>";
+			"\r\n<b>Hello world!</b>";
 			
 const std::string HttpServer::answ404 = 	"HTTP/1.0 404 NOT FOUND\r\n"
 						"Content-length: 0\r\n"
